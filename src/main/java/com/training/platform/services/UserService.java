@@ -21,5 +21,6 @@ public interface UserService {
     List<User> findAllByJpqlParamsQuery(Integer active, String city);
     Map<String,String> getCities();
     User save(Map<String,String> inputs) throws Exception;
+    boolean isEmailAlreadyInUse(String email);
 
 }

@@ -14,6 +14,9 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UtilsService utilsService;
+
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
@@ -71,8 +74,10 @@ public class UserServiceImpl implements UserService {
             user.setName(inputs.get("name"));
             user.setSurname(inputs.get("surname"));
             user.setEmail(inputs.get("email"));
-            user.setPassword(inputs.get("password"));
-            user.setConfirm_password(inputs.get("confirm_password"));
+            //user.setPassword(inputs.get("password"));
+            //user.setConfirm_password(inputs.get("confirm_password"));
+            user.setPassword(utilsService.encrytePassword(inputs.get("password")));
+            user.setConfirm_password(utilsService.encrytePassword(inputs.get("confirm_password")));
             user.setAge(Integer.parseInt(inputs.get("age")));
             user.setAddress(inputs.get("address"));
             user.setCity(inputs.get("city"));
@@ -84,6 +89,15 @@ public class UserServiceImpl implements UserService {
             throw ex;
         }
     }
+
+    @Override
+    public boolean isEmailAlreadyInUse(String email) {
+        boolean emailInuse = true;
+        if (userRepository.findByEmail(email) == null) emailInuse = false;
+        return emailInuse;
+    }
+
+
 
 
 }

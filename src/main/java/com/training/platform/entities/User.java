@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.training.platform.validators.FieldsValueMatch;
+import com.training.platform.validators.UniqueEmail;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
@@ -43,8 +45,11 @@ public class User implements Serializable {
 
     @Column(name = "email")
     @NotEmpty(message = "Email is a required field")
-    //@Email(message = "Email is a email pattern")
+    @Email(message = "Email is a email pattern")
+//Insert this line
+    @UniqueEmail(message = "There is already user with this email!")
     private String email;
+
 
     @Column(name = "password")
     @NotEmpty(message = "Password is a required field")
