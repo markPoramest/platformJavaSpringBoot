@@ -3,6 +3,7 @@ package com.training.platform.entities;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.training.platform.validators.FieldsValueMatch;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,6 +17,9 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "users")
+@FieldsValueMatch(field = "password",
+        fieldMatch = "confirm_password",
+        message = "The password fields must match")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
