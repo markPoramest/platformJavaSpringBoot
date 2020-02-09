@@ -96,6 +96,28 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(email) == null) emailInuse = false;
         return emailInuse;
     }
+    @Override
+    public User update(Optional<User> user, Map<String,String> inputs) throws Exception
+    {
+        try {
+            user.get().setName(inputs.get("name"));
+            user.get().setSurname(inputs.get("surname"));
+            user.get().setAge(Integer.parseInt(inputs.get("age")));
+            user.get().setAddress(inputs.get("address"));
+            user.get().setCity(inputs.get("city"));
+            user.get().setMobile(inputs.get("mobile"));
+            user.get().setUpdatedAt(new Date());
+            return userRepository.save(user.get());
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    @Override
+    public void deleteById(Integer id) throws Exception {
+        userRepository.deleteById(id);
+    }
+
 
 
 

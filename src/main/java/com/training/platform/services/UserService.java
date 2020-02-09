@@ -22,5 +22,7 @@ public interface UserService {
     Map<String,String> getCities();
     User save(Map<String,String> inputs) throws Exception;
     boolean isEmailAlreadyInUse(String email);
+    User update(Optional<User> user, Map<String,String> inputs) throws Exception;
+    void deleteById(Integer id) throws Exception;
 
 }
