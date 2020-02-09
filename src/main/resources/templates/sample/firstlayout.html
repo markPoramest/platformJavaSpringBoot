@@ -1,0 +1,63 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<!-- ################ MENU START ############### -->
+<nav class="menu">
+    <h1>Menu</h1>
+    <ul class="sidebar-nav">
+        <li><a href="#">Menu 1</a></li>
+        <li><a href="#">Menu 2</a></li>
+        <li><a href="#">Menu 3</a></li>
+    </ul>
+</nav>
+<!-- ################ MENU END ############### -->
+<div class="col-2">
+    <!-- ################ HEADER START ############### -->
+    <header>
+        <h1>Header</h1>
+    </header>
+    <!-- ################ HEADER END ############### -->
+    <!-- ################ CONTENT START ############### -->
+    <main class="content">
+        <div class="container">
+            <h1>CONTENT</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>List : Users </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> Email </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${items}">
+                            <td><span th:text="${item.name}"> Name </span></td>
+                            <td><span th:text="${item.email}"> Email </span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ################ CONTENT END ############### -->
+    <!-- ################ FOOTER START ############### -->
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+    <!-- ################ FOOTER END ############### -->
+</div>
+</body>
+</html>

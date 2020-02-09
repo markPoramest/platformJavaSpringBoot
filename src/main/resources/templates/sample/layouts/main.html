@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<!-- ################ MENU START ############### -->
+<th:block th:replace="sample/layouts/menu :: menu"/>
+<!-- ################ MENU END ############### -->
+<div class="col-2">
+    <!-- ################ HEADER START ############### -->
+    <th:block th:replace="sample/layouts/header :: header"/>
+    <!-- ################ HEADER END ############### -->
+    <!-- ################ CONTENT START ############### -->
+    <th:block layout:fragment="content"/>
+    <!-- ################ CONTENT END ############### -->
+    <!-- ################ FOOTER START ############### -->
+    <th:block th:replace="sample/layouts/footer :: footer"/>
+    <!-- ################ FOOTER END ############### -->
+</div>
+</body>
+</html>

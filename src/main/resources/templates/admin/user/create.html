@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:form="http://www.w3.org/1999/xhtml"
+  layout:decorate="~{admin/layouts/template}"
+>
+  <body>
+    <div layout:fragment="content" th:remove="tag">
+      <!-- breadcrumb Start -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Users</a>
+        </li>
+        <li class="breadcrumb-item active">Create</li>
+      </ol>
+      <!-- breadcrumb End -->
+
+      <div class="card mb-3">
+        <div class="card-header">Create User</div>
+        <div class="card-body">
+          <form method="POST">
+            <!----- Show Errors Block ------>
+            <!--<div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Error</strong>
+    </div>-->
+
+            <div class="card border-dark">
+              <div class="card-header">
+                Login Information
+              </div>
+              <div class="card-body text-dark">
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input
+                    class="form-control"
+                    id="email"
+                    type="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+
+                <div class="form-group">
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <label for="password">Password</label>
+                      <input
+                        class="form-control"
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                      />
+                      <!--<span class="text-danger">errors</span>-->
+                    </div>
+                    <div class="col-md-6">
+                      <label for="confirm_password">Confirm password</label>
+                      <input
+                        class="form-control"
+                        id="confirm_password"
+                        type="password"
+                        placeholder="Confirm password"
+                      />
+                      <!--<span class="text-danger">errors</span>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="name">First name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter first name"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+                <div class="col-md-6">
+                  <label for="surname">Last name</label>
+                  <input
+                    class="form-control"
+                    id="surname"
+                    type="text"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter last name"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="mobile">Mobile</label>
+                  <input
+                    class="form-control"
+                    id="mobile"
+                    type="text"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter mobile"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+                <div class="col-md-6">
+                  <label for="age">Age</label>
+                  <input
+                    class="form-control"
+                    id="age"
+                    type="text"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter age"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <label for="address">Address</label>
+                  <input
+                    class="form-control"
+                    id="address"
+                    type="text"
+                    aria-describedby="nameHelp"
+                    placeholder="Enter address"
+                  />
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+                <div class="col-md-6">
+                  <label>City</label>
+                  <select class="form-control">
+                    <option value=""> --- Select City ---- </option>
+                  </select>
+                  <!--<span class="text-danger">errors</span>-->
+                </div>
+              </div>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary" />&nbsp;
+            <input type="reset" value="Reset" class="btn btn-danger" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
