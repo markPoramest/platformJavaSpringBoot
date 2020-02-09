@@ -8,11 +8,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -44,6 +49,33 @@ public class UserController {
         return "admin/user/lists";
 
     }
+    @GetMapping(value="/create")
+    public String create(Model model, User user) {
+        model.addAttribute("cities", userService.getCities());
+        model.addAttribute("user", user);
+        return "admin/user/create";
+    }
+    @PostMapping(value="")
+    public String store(@Valid User user,
+                        BindingResult bindingResult,
+                        @RequestParam Map<String,String> inputs,
+                        RedirectAttributes redirAttrs,
+                        Model model) throws Exception {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("cities", userService.getCities());
+            model.addAttribute("user", user);
+            return "admin/user/create";
+        }
+//Saving data
+        userService.save(inputs);
+        redirAttrs.addFlashAttribute("success", "User [" +
+                inputs.get("name") + " " +
+                inputs.get("surname") + "] " +
+                "created successfully.");
+        return "redirect:/admin/user";
+    }
+
+
 
 }
 
