@@ -16,6 +16,24 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.training.platform.validators.Default;
+import com.training.platform.validators.Extended;
+import com.training.platform.validators.FieldsValueMatch;
+import com.training.platform.validators.UniqueEmail;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
@@ -72,6 +90,7 @@ public class User implements Serializable {
     @NotEmpty(message = "City is a required field", groups={ Default.class })
     private String city;
 
+
     @Column(name = "mobile")
     private String mobile;
 
@@ -92,4 +111,11 @@ public class User implements Serializable {
 
     @OneToOne(mappedBy = "user")
     private Shop shop;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+
 }

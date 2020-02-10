@@ -62,11 +62,6 @@ public class UserController {
                         @RequestParam Map<String,String> inputs,
                         RedirectAttributes redirAttrs,
                         Model model) throws Exception {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("cities", userService.getCities());
-            model.addAttribute("user", user);
-            return "admin/user/create";
-        }
 //Saving data
         userService.save(inputs);
         redirAttrs.addFlashAttribute("success", "User [" +
@@ -84,6 +79,7 @@ public class UserController {
         return "admin/user/edit";
     }
 
+
     @PutMapping(value="/{id}")
     public String update(@PathVariable String id,
                          @Validated({ Default.class }) User user,
@@ -91,6 +87,7 @@ public class UserController {
                          @RequestParam Map<String,String> inputs,
                          RedirectAttributes redirAttrs,
                          Model model) throws Exception {
+
         Optional<User> obj = userService.findById(Integer.parseInt(id));
         if (bindingResult.hasErrors()) {
             model.addAttribute("cities", userService.getCities());

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Spring Security Tutorial</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <form th:action="@{/login}" method="POST" class="form-signin" th:object="${user}" >
+                        <div class="form-label-group" th:if="${param.error}">
+                            <p class="login-errors">Email or Password invalid, please verify</p>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="email" id="email" th:field="*{email}" th:placeholder="Email" class="form-control" required autofocus>
+                            <label for="email">Email address</label>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">errors</span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" id="password" th:field="*{password}" th:placeholder="Password" class="form-control" required>
+                            <label for="password">Password</label>
+                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">errors</span>
+                        </div>
+                        <button name="Submit" type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">Login in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

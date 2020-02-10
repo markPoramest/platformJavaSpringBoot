@@ -12,6 +12,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @GetMapping(value = "")
     public List<User> index() throws Exception {
         return userService.findAll();

@@ -1,4 +1,4 @@
 package com.training.platform.validators;
 
-public class Default {
+public interface Default {
 }
