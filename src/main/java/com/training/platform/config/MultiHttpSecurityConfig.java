@@ -52,6 +52,8 @@ public class MultiHttpSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/demo/***").permitAll()
                 .antMatchers("/login").permitAll()
+
+
                 .antMatchers("/api/***").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()

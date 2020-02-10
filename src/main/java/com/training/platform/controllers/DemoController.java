@@ -1,8 +1,10 @@
 package com.training.platform.controllers;
 
 import com.training.platform.entities.User;
+import com.training.platform.entities.es.Company;
 import com.training.platform.repositories.UserRepository;
 import com.training.platform.services.UserService;
+import com.training.platform.services.es.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,14 @@ import java.util.Map;
 public class DemoController {
     @Autowired
     private UserService userService;
+    @Autowired
+    CompanyService companyService;
+
+    @GetMapping(value="/es_lists")
+    public Iterable<Company> es_lists () {
+        return companyService.findAll();
+    }
+
     @GetMapping(value = "")
     public List<User> index() throws Exception {
         // Change from UserRepository to UserService
